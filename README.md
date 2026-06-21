@@ -79,10 +79,16 @@ visuel, remplacer le contenu de `PhotoSlot` par l'image (en conservant le
 - Lazy-loading du moteur Three.js (hors chemin critique), code-splitting
   `three` / `gsap`, `transform`/`opacity` uniquement pour les animations.
 
-## Note outillage
+## Composants & sources
 
-Le brief prévoyait l'usage du MCP **21st.dev Magic** (`magic`) pour générer les
-composants. Ce serveur MCP n'étant pas configuré dans cet environnement, les
-composants ont été écrits à la main selon la même direction artistique. Une fois
-le serveur `magic` installé, n'importe quel composant peut être régénéré/raffiné
-via Magic — l'architecture ne s'y oppose pas.
+- **21st.dev Magic** (`magic` MCP) : installé. Ses tools se chargent au démarrage
+  d'une session Claude Code — disponibles à la prochaine session pour
+  générer/raffiner des composants.
+- **ReactBits** (réimplémentés localement, le site étant inaccessible depuis
+  l'environnement de build) : `ShinyText` (eyebrow du hero), `GradientText` +
+  `SplitText` (titre de la boutique). Voir `src/components/reactbits/`.
+- **Uiverse** (dans l'esprit, re-stylisé aux tokens ICARE) : bouton « shine » de
+  la newsletter. Voir `src/components/uiverse/`.
+- **Tooltip maison** (`src/components/Tooltip.tsx`) : tooltip accessible sans
+  dépendance, sur les badges d'acte produit. (reablocks a été évalué puis écarté :
+  +115 kB gzip et init dépendante de la locale, disproportionné pour une tooltip.)

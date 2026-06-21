@@ -1,8 +1,8 @@
-import { Tooltip } from "reablocks";
 import { formatPrice, type Product } from "../lib/products";
 import { PhotoSlot } from "./PhotoSlot";
+import { Tooltip } from "./Tooltip";
 
-// Short gloss for each act of the myth, surfaced on the badge via reablocks Tooltip.
+// Short gloss for each act of the myth, surfaced on the badge via Tooltip.
 const ACT_HINT: Record<Product["act"], string> = {
   Ascension: "Le vol commence — l'élan vers le soleil.",
   Apogée: "Le sommet — trop près, trop chaud.",
@@ -31,8 +31,8 @@ export function ProductCard({
         </div>
       </button>
 
-      <Tooltip content={ACT_HINT[product.act]}>
-        <span className="pointer-events-auto absolute left-3 top-3 cursor-help rounded-full border border-gold/30 bg-obsidian/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-myth text-gold-bright backdrop-blur">
+      <Tooltip content={ACT_HINT[product.act]} className="absolute left-3 top-3 z-10">
+        <span className="rounded-full border border-gold/30 bg-obsidian/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-myth text-gold-bright backdrop-blur">
           {product.act}
         </span>
       </Tooltip>

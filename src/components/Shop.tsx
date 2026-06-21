@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { ThemeProvider } from "reablocks";
 import { PRODUCTS, type Product } from "../lib/products";
-import { icareReablocksTheme } from "../lib/reablocks-theme";
 import { ProductCard } from "./ProductCard";
 import { ProductModal } from "./ProductModal";
 import { Reveal } from "./Reveal";
@@ -12,7 +10,6 @@ export function Shop() {
   const [active, setActive] = useState<Product | null>(null);
 
   return (
-    <ThemeProvider theme={icareReablocksTheme}>
     <section
       id="collection"
       className="relative scroll-mt-20 border-t border-gold/10 bg-obsidian py-24 sm:py-32"
@@ -42,6 +39,5 @@ export function Shop() {
 
       <ProductModal product={active} onClose={() => setActive(null)} />
     </section>
-    </ThemeProvider>
   );
 }
