@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    /* Lenis controls smooth scroll; disable native smooth to avoid conflict. */
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-obsidian text-solar font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Lenis: html.lenis class is added by the smooth-scroll runtime. */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::selection {
+    @apply bg-gold text-obsidian;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users (a11y: focus-states). */
+  :focus-visible {
+    outline: 2px solid theme("colors.gold.bright");
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Honour reduced-motion globally as a safety net (a11y: reduced-motion). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-edge {
+    @apply mx-auto w-full max-w-edge px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Skip link — keyboard users land on a reachable control (a11y: skip-links). */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[1000] rounded bg-gold px-4 py-2 font-sans text-sm font-semibold text-obsidian;
+  }
+
+  .eyebrow {
+    @apply font-sans text-xs font-medium uppercase tracking-myth text-gold-bright;
+  }
+
+  /* Tabular figures for prices/quantities to prevent layout shift (number-tabular). */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
