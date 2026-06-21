@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aperçu — Sensei Tattoo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { 950:"#0a0a0b",900:"#101012",800:"#17171a",700:"#222226",600:"#34343a" },
+            cinnabar: { DEFAULT:"#c4302b",400:"#e0483f",500:"#c4302b",600:"#9c211d" },
+            bone: "#e8e4dc",
+          },
+          fontFamily: {
+            sans: ['Inter','ui-sans-serif','system-ui','sans-serif'],
+            brush: ['"Shippori Mincho"','"Noto Serif JP"','serif'],
+          },
+          boxShadow: { glow: "0 0 40px -10px rgba(196,48,43,0.45)" },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: Inter, system-ui, sans-serif; }
+    .font-brush { font-family: "Shippori Mincho", serif; }
+    .ink-grain {
+      background-image:
+        radial-gradient(60rem 60rem at 80% -10%, rgba(196,48,43,0.10), transparent 60%),
+        radial-gradient(50rem 50rem at -10% 20%, rgba(196,48,43,0.06), transparent 55%);
+    }
+  </style>
+</head>
+<body class="ink-grain min-h-screen bg-ink-950 text-bone antialiased">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 border-b border-ink-700/60 bg-ink-950/80 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a href="#" class="group flex items-center gap-2">
+        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-cinnabar font-brush text-lg font-bold text-bone shadow-glow">先</span>
+        <span class="font-brush text-lg font-bold tracking-wide">Sensei<span class="text-cinnabar">.</span></span>
+      </a>
+      <ul class="hidden items-center gap-8 md:flex">
+        <li><a href="#artistes" class="text-sm text-bone/70 hover:text-bone transition-colors">Artistes</a></li>
+        <li><a href="#galerie" class="text-sm text-bone/70 hover:text-bone transition-colors">Galerie</a></li>
+        <li><a href="#studio" class="text-sm text-bone/70 hover:text-bone transition-colors">Studio</a></li>
+        <li><a href="#contact" class="text-sm text-bone/70 hover:text-bone transition-colors">Contact</a></li>
+      </ul>
+      <a href="#contact" class="hidden rounded-full border border-cinnabar/60 px-5 py-2 text-sm font-medium text-bone hover:bg-cinnabar transition-colors md:inline-block">Prendre RDV</a>
+      <div class="flex flex-col gap-1.5 md:hidden">
+        <span class="h-0.5 w-6 bg-bone"></span><span class="h-0.5 w-6 bg-bone"></span><span class="h-0.5 w-6 bg-bone"></span>
+      </div>
+    </nav>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-6">
+    <!-- HERO -->
+    <section class="py-20 sm:py-28">
+      <p class="font-brush text-cinnabar-400 tracking-[0.3em] uppercase text-sm">先生 · Sensei Tattoo</p>
+      <h1 class="mt-4 font-brush text-4xl sm:text-6xl font-bold leading-tight">L'encre comme <span class="text-cinnabar">discipline</span>.</h1>
+      <p class="mt-6 max-w-xl text-bone/70">Studio de tatouage à l'esprit japonais. Irezumi, trait fin et blackwork, sur rendez-vous uniquement.</p>
+    </section>
+
+    <!-- CARTES -->
+    <section id="artistes" class="pb-24">
+      <h2 class="font-brush text-2xl font-bold mb-8">Les artistes</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+        <article class="group relative overflow-hidden rounded-2xl border border-ink-700/70 bg-ink-900 transition-all duration-300 hover:-translate-y-1 hover:border-cinnabar/50 hover:shadow-glow">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?q=80&w=800&auto=format&fit=crop" alt="Kenji" class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent"></div>
+            <span class="absolute left-4 top-4 rounded-full bg-cinnabar/90 px-3 py-1 text-xs font-medium uppercase tracking-wider text-bone">Irezumi</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-brush text-xl font-bold">Kenji</h3>
+            <p class="mt-1 text-sm text-cinnabar-400">Irezumi · Traditionnel japonais</p>
+            <p class="mt-3 text-sm leading-relaxed text-bone/65">Pièces larges au tracé classique : dragons, koi, vagues. Le travail à l'aiguille tebori sur demande.</p>
+            <a href="#" class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-bone hover:text-cinnabar transition-colors">Voir le book <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="group relative overflow-hidden rounded-2xl border border-ink-700/70 bg-ink-900 transition-all duration-300 hover:-translate-y-1 hover:border-cinnabar/50 hover:shadow-glow">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?q=80&w=800&auto=format&fit=crop" alt="Yuki" class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent"></div>
+            <span class="absolute left-4 top-4 rounded-full bg-cinnabar/90 px-3 py-1 text-xs font-medium uppercase tracking-wider text-bone">Fine line</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-brush text-xl font-bold">Yuki</h3>
+            <p class="mt-1 text-sm text-cinnabar-400">Fine line · Botanique</p>
+            <p class="mt-3 text-sm leading-relaxed text-bone/65">Trait fin, fleurs et minéraux. Compositions délicates pensées pour épouser le corps.</p>
+            <a href="#" class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-bone hover:text-cinnabar transition-colors">Voir le book <span>→</span></a>
+          </div>
+        </article>
+
+        <article class="group relative overflow-hidden rounded-2xl border border-ink-700/70 bg-ink-900 transition-all duration-300 hover:-translate-y-1 hover:border-cinnabar/50 hover:shadow-glow">
+          <div class="relative aspect-[4/5] overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?q=80&w=800&auto=format&fit=crop" alt="Ren" class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-transparent"></div>
+            <span class="absolute left-4 top-4 rounded-full bg-cinnabar/90 px-3 py-1 text-xs font-medium uppercase tracking-wider text-bone">Blackwork</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-brush text-xl font-bold">Ren</h3>
+            <p class="mt-1 text-sm text-cinnabar-400">Blackwork · Géométrie</p>
+            <p class="mt-3 text-sm leading-relaxed text-bone/65">Aplats noirs profonds et symétries. Le contraste comme signature de l'encre Sensei.</p>
+            <a href="#" class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-bone hover:text-cinnabar transition-colors">Voir le book <span>→</span></a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>
