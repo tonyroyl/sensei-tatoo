@@ -1,4 +1,5 @@
 import { ArrowDownIcon } from "./icons";
+import { ShinyText } from "./reactbits/ShinyText";
 
 export function Hero() {
   return (
@@ -13,7 +14,9 @@ export function Hero() {
       </div>
 
       <div className="container-edge relative flex flex-col items-center text-center">
-        <p className="eyebrow mb-6 animate-fade-rise">Streetwear · Édition Héliade</p>
+        <p className="eyebrow mb-6 animate-fade-rise">
+          <ShinyText text="Streetwear · Édition Héliade" speed={6} />
+        </p>
         <h1 className="font-display text-[22vw] font-black leading-[0.82] tracking-tight text-solar animate-fade-rise sm:text-[18vw] lg:text-[14rem]">
           ICARE
         </h1>

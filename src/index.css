@@ -74,4 +74,90 @@
   .tnum {
     font-variant-numeric: tabular-nums;
   }
+
+  /* ---- ReactBits: ShinyText (re-skinned to ICARE gold) ---- */
+  .rb-shiny-text {
+    display: inline-block;
+    color: var(--rb-shiny-base, #c8841ecc);
+    background: linear-gradient(
+      120deg,
+      rgba(244, 236, 221, 0) 40%,
+      rgba(244, 236, 221, 0.95) 50%,
+      rgba(244, 236, 221, 0) 60%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: rb-shine linear infinite;
+  }
+  @keyframes rb-shine {
+    0% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: -100%;
+    }
+  }
+
+  /* ---- ReactBits: GradientText (molten-gold pan) ---- */
+  .rb-gradient-text {
+    background: linear-gradient(
+      to right,
+      #c8841e,
+      #e8a33d,
+      #f4ecdd,
+      #e8a33d,
+      #c8841e
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: rb-gradient-pan 5s linear infinite;
+  }
+  @keyframes rb-gradient-pan {
+    to {
+      background-position: 200% center;
+    }
+  }
+
+  /* ---- Uiverse-style shine button (re-skinned) ---- */
+  .uiverse-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .uiverse-shine::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-120%) skewX(-20deg);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(244, 236, 221, 0.55),
+      transparent
+    );
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+  }
+  .uiverse-shine:hover::before,
+  .uiverse-shine:focus-visible::before {
+    transform: translateX(120%) skewX(-20deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rb-shiny-text,
+    .rb-gradient-text {
+      animation: none;
+    }
+    .rb-gradient-text {
+      -webkit-text-fill-color: #e8a33d;
+      color: #e8a33d;
+    }
+    .uiverse-shine::before {
+      display: none;
+    }
+  }
 }

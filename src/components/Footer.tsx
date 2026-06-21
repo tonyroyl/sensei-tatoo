@@ -1,3 +1,5 @@
+import { ShineButton } from "./uiverse/ShineButton";
+
 export function Footer() {
   return (
     <footer
@@ -42,12 +44,9 @@ export function Footer() {
                 placeholder="votre@email.com"
                 className="h-11 min-w-0 flex-1 rounded-full border border-gold/25 bg-obsidian/60 px-4 text-sm text-solar placeholder:text-solar/30 focus:border-gold"
               />
-              <button
-                type="submit"
-                className="h-11 shrink-0 rounded-full bg-gold px-5 text-sm font-semibold text-obsidian transition-transform duration-200 hover:scale-[1.03] active:scale-95"
-              >
+              <ShineButton type="submit" className="h-11 shrink-0">
                 Suivre
-              </button>
+              </ShineButton>
             </form>
           </div>
         </div>

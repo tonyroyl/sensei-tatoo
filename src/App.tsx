@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { CartProvider } from "./lib/cart";
 import { ToastProvider } from "./lib/toast";
 import { useReducedMotion } from "./lib/useReducedMotion";
@@ -5,10 +6,15 @@ import { useSmoothScroll } from "./lib/useSmoothScroll";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { SignatureScene } from "./components/SignatureScene";
-import { Shop } from "./components/Shop";
 import { CartDrawer } from "./components/CartDrawer";
 import { Toaster } from "./components/Toaster";
 import { Footer } from "./components/Footer";
+
+// Shop carries reablocks (+ its motion dep), so it loads as its own async chunk
+// off the critical path — it lives below the fold anyway.
+const Shop = lazy(() =>
+  import("./components/Shop").then((m) => ({ default: m.Shop })),
+);
 
 export default function App() {
   const reduced = useReducedMotion();
@@ -27,7 +33,11 @@ export default function App() {
         <main>
           <Hero />
           <SignatureScene />
-          <Shop />
+          <Suspense
+            fallback={<div className="min-h-screen bg-obsidian" aria-hidden />}
+          >
+            <Shop />
+          </Suspense>
         </main>
 
         <Footer />

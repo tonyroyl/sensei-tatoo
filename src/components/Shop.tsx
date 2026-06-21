@@ -1,22 +1,29 @@
 import { useState } from "react";
+import { ThemeProvider } from "reablocks";
 import { PRODUCTS, type Product } from "../lib/products";
+import { icareReablocksTheme } from "../lib/reablocks-theme";
 import { ProductCard } from "./ProductCard";
 import { ProductModal } from "./ProductModal";
 import { Reveal } from "./Reveal";
+import { GradientText } from "./reactbits/GradientText";
+import { SplitText } from "./reactbits/SplitText";
 
 export function Shop() {
   const [active, setActive] = useState<Product | null>(null);
 
   return (
+    <ThemeProvider theme={icareReablocksTheme}>
     <section
       id="collection"
       className="relative scroll-mt-20 border-t border-gold/10 bg-obsidian py-24 sm:py-32"
     >
       <div className="container-edge">
         <Reveal className="mb-14 max-w-2xl">
-          <p className="eyebrow mb-3">La Collection · Héliade</p>
+          <p className="eyebrow mb-3">
+            <GradientText>La Collection · Héliade</GradientText>
+          </p>
           <h2 className="font-display text-4xl font-black leading-tight text-solar sm:text-6xl">
-            Chaque pièce, une station du vol.
+            <SplitText text="Chaque pièce, une station du vol." />
           </h2>
           <p className="mt-4 text-base text-solar/60">
             Six pièces, trois actes. De l'armature des ailes à la cendre de la
@@ -35,5 +42,6 @@ export function Shop() {
 
       <ProductModal product={active} onClose={() => setActive(null)} />
     </section>
+    </ThemeProvider>
   );
 }

@@ -1,5 +1,13 @@
+import { Tooltip } from "reablocks";
 import { formatPrice, type Product } from "../lib/products";
 import { PhotoSlot } from "./PhotoSlot";
+
+// Short gloss for each act of the myth, surfaced on the badge via reablocks Tooltip.
+const ACT_HINT: Record<Product["act"], string> = {
+  Ascension: "Le vol commence — l'élan vers le soleil.",
+  Apogée: "Le sommet — trop près, trop chaud.",
+  Chute: "La cire cède — le retour au sol.",
+};
 
 export function ProductCard({
   product,
@@ -9,7 +17,7 @@ export function ProductCard({
   onOpen: (product: Product) => void;
 }) {
   return (
-    <article className="group flex flex-col">
+    <article className="group relative flex flex-col">
       <button
         type="button"
         onClick={() => onOpen(product)}
@@ -21,10 +29,13 @@ export function ProductCard({
             <PhotoSlot photo={product.photo} label={product.name} />
           </div>
         </div>
-        <span className="absolute left-3 top-3 rounded-full border border-gold/30 bg-obsidian/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-myth text-gold-bright backdrop-blur">
+      </button>
+
+      <Tooltip content={ACT_HINT[product.act]}>
+        <span className="pointer-events-auto absolute left-3 top-3 cursor-help rounded-full border border-gold/30 bg-obsidian/70 px-2.5 py-1 text-[10px] font-medium uppercase tracking-myth text-gold-bright backdrop-blur">
           {product.act}
         </span>
-      </button>
+      </Tooltip>
 
       <div className="mt-4 flex items-start justify-between gap-3">
         <div>
