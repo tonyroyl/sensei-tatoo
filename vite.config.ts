@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { fileURLToPath } from "node:url";
 
 // https://vite.dev/config/
 export default defineConfig(({ command }) => ({
@@ -7,6 +8,12 @@ export default defineConfig(({ command }) => ({
   // /sensei-tatoo/ (the repo name = project-pages base path).
   base: command === "build" ? "/sensei-tatoo/" : "/",
   plugins: [react()],
+  resolve: {
+    alias: {
+      // shadcn-style "@" alias -> ./src
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
   build: {
     target: "es2020",
     rollupOptions: {

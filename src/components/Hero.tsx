@@ -1,7 +1,15 @@
+import { lazy, Suspense } from "react";
 import { ArrowDownIcon } from "./icons";
 import { ShinyText } from "./reactbits/ShinyText";
+import { useReducedMotion } from "../lib/useReducedMotion";
+
+// tsparticles is heavy — load the sparkles field as its own async chunk.
+const SparklesCore = lazy(() =>
+  import("./ui/sparkles").then((m) => ({ default: m.SparklesCore })),
+);
 
 export function Hero() {
+  const reduced = useReducedMotion();
   return (
     <section
       id="top"
@@ -12,6 +20,24 @@ export function Hero() {
         <div className="absolute left-1/2 top-[38%] h-[70vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(232,163,61,0.35),rgba(200,132,30,0.12)_40%,transparent_70%)] blur-2xl" />
         <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_50%_120%,rgba(122,36,16,0.35),transparent_55%)]" />
       </div>
+
+      {/* Feather dust: gold particles drifting around the ICARE "sun".
+          Skipped under reduced-motion. */}
+      {!reduced && (
+        <div className="pointer-events-none absolute left-1/2 top-[42%] h-[88vmin] w-[96vmin] -translate-x-1/2 -translate-y-1/2">
+          <Suspense fallback={null}>
+            <SparklesCore
+              background="transparent"
+              minSize={0.6}
+              maxSize={1.8}
+              particleDensity={260}
+              speed={1.8}
+              particleColor="#E8A33D"
+              className="h-full w-full [mask-image:radial-gradient(62%_62%_at_50%_45%,white,transparent_78%)]"
+            />
+          </Suspense>
+        </div>
+      )}
 
       <div className="container-edge relative flex flex-col items-center text-center">
         <p className="eyebrow mb-6 animate-fade-rise">
